@@ -11,10 +11,9 @@ class RootController < ApplicationController
     alert.update_attributes({
                                 :user => session[:session_id],
                                 :session => session[:session_id],
-                                :message => 'Help Me!!!',
-                                :geo_code => 'London, UK'
+                                :message => params['message'],
+                                :geo_code => "#{params['lat']},#{params['long']}"
                             })
-
     alert.save!
   end
 

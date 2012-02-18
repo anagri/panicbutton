@@ -1,113 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0"/>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js"></script>
 
-    <script>
-        $(document).ready(function () {   
-            // wire up button click   
-            $('#go').click(function () {       
-                // test for presence of geolocation       
-                if (navigator && navigator.geolocation) {           
-                    navigator.geolocation.getCurrentPosition(geo_success, geo_error);
-                } else { 
-                    error('Geolocation is not supported.');
-                }   
-            });
-        }); 
+  <script>
+      $(document).ready(function () {
+          // wire up button click   
+          $('#go').click(function () {
+              // test for presence of geolocation       
+              if (navigator && navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(geo_success, geo_error);
+              } else {
+                  error('Geolocation is not supported.');
+              }
+          });
+      });
 
-        function geo_success(position) {
-            printLatLong(position.coords.latitude, position.coords.longitude);} 
-            // The PositionError object returned contains the following attributes:
-            // code: a numeric response code
-            // PERMISSION_DENIED = 1
-            // POSITION_UNAVAILABLE = 2
-            // TIMEOUT = 3
-            // message: Primarily for debugging. It's recommended not to show this error
-            // to users.
+      function geo_success(position) {
+          printLatLong(position.coords.latitude, position.coords.longitude);
+      }
+      // The PositionError object returned contains the following attributes:
+      // code: a numeric response code
+      // PERMISSION_DENIED = 1
+      // POSITION_UNAVAILABLE = 2
+      // TIMEOUT = 3
+      // message: Primarily for debugging. It's recommended not to show this error
+      // to users.
 
-            function geo_error(err) { if (err.code == 1) {
-                error('The user denied the request for location information.')
-            } else if (err.code == 2) {
-                error('Your location information is unavailable.')
-            } else if (err.code == 3) { 
-                error('The request to get your location timed out.')
-            } else {
-                error('An unknown error occurred while requesting your location.')
-            }
-        } 
+      function geo_error(err) {
+          if (err.code == 1) {
+              error('The user denied the request for location information.')
+          } else if (err.code == 2) {
+              error('Your location information is unavailable.')
+          } else if (err.code == 3) {
+              error('The request to get your location timed out.')
+          } else {
+              error('An unknown error occurred while requesting your location.')
+          }
+      }
 
-        // output lat and long
+      // output lat and long
 
-        function printLatLong(lat, long) {
-            $('body').append('<p>Lat: ' + lat + '</p>');
-            $('body').append('<p>Long: ' + long + '</p>');
-        }
-        function error(msg) {
-            alert(msg);
-        }
+      function printLatLong(lat, long) {
+          $('body').append('<p>Lat: ' + lat + '</p>');
+          $('body').append('<p>Long: ' + long + '</p>');
+          $('input.lat').val(lat);
+          $('input.long').val(long);
+      }
+      function error(msg) {
+          alert(msg);
+      }
 
-    </script>
+  </script>
 
-<style>
-body {
-    background: #fff;
-    padding: 0;
-    margin: 0;
-}
+  <style>
+      body {
+          background: #fff;
+          padding: 0;
+          margin: 0;
+      }
 
-.main {
-    width: 300px;
-    margin: 0 auto;
-    /*border: 1px solid #f00;*/
-}
+      .main {
+          width: 300px;
+          margin: 0 auto;
+          /*border: 1px solid #f00;*/
+      }
 
-.location-finder {
-    width: 100%;
-    text-align: center;
-    margin-top: 50px;
-}
+      .location-finder {
+          width: 100%;
+          text-align: center;
+          margin-top: 50px;
+      }
 
-.panic-button-img {
-    margin-top: 20px;
-}
+      .panic-button-img {
+          margin-top: 20px;
+      }
 
-@media screen and (max-device-width: 480px) {
-    body {
-      -webkit-text-size-adjust:none;
-      font-family:Helvetica, Arial, Verdana, sans-serif;
-      /*padding:5px;*/
-    }
+      @media screen and (max-device-width: 480px) {
+          body {
+              -webkit-text-size-adjust: none;
+              font-family: Helvetica, Arial, Verdana, sans-serif;
+              /*padding:5px;*/
+          }
 
-    .main {
-        width: 450px;
-        margin: 0 auto;
-    }
-}
+          .main {
+              width: 450px;
+              margin: 0 auto;
+          }
+      }
 
-@media only screen and (max-device-width: 320px) {
-    .main {
-        width: 305px;
-        margin: 0 auto;
-    }
-}
+      @media only screen and (max-device-width: 320px) {
+          .main {
+              width: 305px;
+              margin: 0 auto;
+          }
+      }
 
 
-</style>
-
+  </style>
 
 
 </head>
 
 <body>
-    <section class="main">
-        <a href="/panic"><img src="images/PanicBtn.png" class="panic-button-img" alt="Panic Button" width="300" height="300" /></a>
-        <div class="location-finder">
-            <input type="button" id="go" value="Click Me To View Your Location" />
-        </div>
-    </section>
+<section class="main">
+  <div class="location-finder">
+    <form method="post" action="/panic">
+      <input type="image" src="images/PanicBtn.png" alt="Panic Button" width="300" height="300">
+      <input type="hidden" name="lat" class="lat"/>
+      <input type="hidden" name="long" class="long"/>
+      <input type="text" name="message">
+      <input type="button" id="go" value="Include My Location"/>
+    </form>
+  </div>
+</section>
 
 </body>
 </html>
