@@ -82,6 +82,15 @@
         margin-top: 50px;
       }
 
+      .location-button {
+        background: #0066ff;
+        color: white;
+        border: none;
+        border-radius: 8px 8px 8px 8px;
+        -moz-border-radius: 8px 8px 8px 8px;
+        -webkit-border-radius: 8px 8px 8px 8px;
+      }
+
       @media screen and (max-device-width: 480px) {
           body {
               -webkit-text-size-adjust: none;
@@ -116,7 +125,7 @@
       <input type="hidden" name="lat" class="lat"/>
       <input type="hidden" name="long" class="long"/>
       <input type="text" name="message">
-      <input type="button" id="go" value="Include My Location"/>
+      <input type="button" id="go" class="location-button" value="Include My Location"/>
     </form>
 
     <div class="buttons">
