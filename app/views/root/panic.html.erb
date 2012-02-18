@@ -5,8 +5,18 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+<style>
+      .main {
+          width: 302px;
+          margin: 50px auto;
+          /*border: 1px solid #f00;*/
+      }
+</style>
 </head>
 <body>
-<a href="/stop"><img src="images/stop.jpg"/></a>
+    <section class="main">
+        <a href="/stop"><img src="images/stopBtn.png" width="300" height="85" /></a>
+    </section>
+
 </body>
 </html>
