@@ -26,4 +26,6 @@ class RootController < ApplicationController
     @alert.destroy if @alert
     redirect_to :action => :index
   end
+  def messages
+  end
 end
