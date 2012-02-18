@@ -70,6 +70,10 @@ body {
     margin-top: 50px;
 }
 
+.panic-button-img {
+    margin-top: 20px;
+}
+
 @media screen and (max-device-width: 480px) {
     body {
       -webkit-text-size-adjust:none;
@@ -80,7 +84,6 @@ body {
     .main {
         width: 450px;
         margin: 0 auto;
-        border: 1px solid #f00;
     }
 }
 
@@ -88,7 +91,6 @@ body {
     .main {
         width: 305px;
         margin: 0 auto;
-        border: 1px solid #f00;
     }
 }
 
@@ -101,7 +103,7 @@ body {
 
 <body>
     <section class="main">
-        <a href="/panic"><img src="images/PanicBtn.png" alt="Panic Button" width="300" height="300" /></a>
+        <a href="/panic"><img src="images/PanicBtn.png" class="panic-button-img" alt="Panic Button" width="300" height="300" /></a>
         <div class="location-finder">
             <input type="button" id="go" value="Click Me To View Your Location" />
         </div>
