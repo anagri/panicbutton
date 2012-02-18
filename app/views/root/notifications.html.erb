@@ -33,7 +33,7 @@
           var myLatlng, marker;
           var infowindow = new google.maps.InfoWindow();
 
-      <% @alerts.each do |alert| %>
+      <% @alerts.select {|alert| alert.geo_code.split(',')[0].present? && alert.geo_code.split(',')[1].present? }.each do |alert| %>
           <% lat = alert.geo_code.split(',')[0] %>
           <% long = alert.geo_code.split(',')[1] %>
           myLatlng = new google.maps.LatLng(<%= lat %>, <%= long %>);
