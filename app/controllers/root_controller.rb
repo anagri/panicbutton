@@ -6,7 +6,8 @@ class RootController < ApplicationController
   end
 
   def panic
-    alert = Alert.all.empty? ? Alert.new : Alert.first
+    alert = Alert.find_by_session(session[:session_id])
+    alert = Alert.new if alert.nil?
     alert.update_attributes({
                                 :user => session[:session_id],
                                 :session => session[:session_id],
