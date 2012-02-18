@@ -4,6 +4,7 @@ Panicbutton::Application.routes.draw do
   match '/notifications' => 'root#notifications'
   match '/stop' => 'root#stop'
   match '/messages' => 'root#messages'
+  match '/reset' => 'root#reset'
 
   match '/mobile' => 'mobile#index'
   match '/mobile/panic' => 'mobile#panic'

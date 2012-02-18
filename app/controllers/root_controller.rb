@@ -28,4 +28,8 @@ class RootController < ApplicationController
   end
   def messages
   end
+  def reset
+    Alert.all.map(&:destroy)
+    render :nothing => true
+  end
 end
