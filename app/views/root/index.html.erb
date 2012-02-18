@@ -49,18 +49,60 @@
 
     </script>
 
+<style>
+body{
+    background: #fff;
+}
+
+.main {
+    width: 300px;
+    margin: 0 auto;
+    /*border: 1px solid #f00;*/
+}
+
+.location-finder {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+@media screen and (max-device-width: 480px){
+    body{
+      -webkit-text-size-adjust:none;
+      font-family:Helvetica, Arial, Verdana, sans-serif;
+      padding:5px;
+    }
+
+    .main {
+        width: 450px;
+        margin: 0 auto;
+        border: 1px solid #f00;
+    }
+}
+
+@media only screen and (max-device-width: 320px) {
+    .main {
+        width: 290px;
+        margin: 0 auto;
+        border: 1px solid #f00;
+    }
+
+}
+
+
+</style>
+
 
 
 </head>
 
 <body>
-    <a href="/panic"><img src="images/panic.jpg" alt="Panic Button"/></a>
-    test
-
-    <input type="button" id="go" value="Click Me To View Your Location" />
-
-
-    
+    <section class="main">
+        <a href="/panic"><img src="images/PanicBtn.png" alt="Panic Button" width="300" height="300" /></a>
+        <div class="location-finder">
+            <input type="button" id="go" value="Click Me To View Your Location" />
+        </div>
+    </section>
 
 </body>
 </html>
