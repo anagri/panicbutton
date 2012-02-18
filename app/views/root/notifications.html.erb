@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <td>User</td>
+    <td>Message</td>
+    <td>Geo Location</td>
+    <td>Time of Alert</td>
+  </tr>
+  <% @alerts.each do |alert| %>
+      <tr>
+        <td><%= alert.user %></td>
+        <td><%= alert.message %></td>
+        <td><%= alert.geo_code %></td>
+        <td><%= alert.created_at %></td>
+      </tr>
+  <% end %>
+</table>

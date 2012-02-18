@@ -1,5 +1,7 @@
 Panicbutton::Application.routes.draw do
   root :to => 'root#index'
+  match '/panic' => 'root#panic'
+  match '/notifications' => 'root#notifications'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
