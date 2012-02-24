@@ -23,7 +23,7 @@
       });
 
       function geo_success(position) {
-          printLatLong(position.coords.latitude, position.coords.longitude);
+          includeLocation(position.coords.latitude, position.coords.longitude);
       }
       // The PositionError object returned contains the following attributes:
       // code: a numeric response code
@@ -47,11 +47,10 @@
 
       // output lat and long
 
-      function printLatLong(lat, long) {
-          $('body').append('<p>Lat: ' + lat + '</p>');
-          $('body').append('<p>Long: ' + long + '</p>');
+      function includeLocation(lat, long) {
           $('input.lat').val(lat);
           $('input.long').val(long);
+          $('#go').css('background', '#66cc00');
       }
       function error(msg) {
           alert(msg);
